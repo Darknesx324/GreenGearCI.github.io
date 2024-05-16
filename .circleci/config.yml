@@ -14,7 +14,7 @@ jobs:
           command: npm install selenium-webdriver chromedriver
       - run:
           name: Run tests
-          command: node Test.js
+          command: node js/Test.js  # Ajusta la ruta del archivo de prueba
   build:
     docker:
       - image: cimg/node:16.14  # Usa la misma imagen para consistencia
@@ -55,4 +55,5 @@ workflows:
             branches:
               only:
                 - master
+
 
