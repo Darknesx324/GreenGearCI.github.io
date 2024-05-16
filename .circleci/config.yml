@@ -3,7 +3,7 @@ version: 2.1
 jobs:
   test:
     docker:
-      - image: cimg/base:stable
+      - image: cimg/node:16.14  # Usa una imagen que tenga Node.js y npm
         environment:
           - CHROME_BIN: /usr/bin/google-chrome
           - DISPLAY: ":99.0"
@@ -17,7 +17,7 @@ jobs:
           command: node Test.js
   build:
     docker:
-      - image: cimg/base:stable
+      - image: cimg/node:16.14  # Usa la misma imagen para consistencia
     steps:
       - checkout
       - run:
@@ -27,7 +27,7 @@ jobs:
           path: example.txt
   deploy:
     docker:
-      - image: cimg/base:stable
+      - image: cimg/node:16.14  # Usa la misma imagen para consistencia
     steps:
       - run:
           name: deploy
@@ -55,3 +55,4 @@ workflows:
             branches:
               only:
                 - master
+
