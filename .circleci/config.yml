@@ -11,7 +11,7 @@ jobs:
       - checkout
       - run:
           name: Install dependencies
-          command: npm install selenium-webdriver chromedriver
+          command: npm install selenium-webdriver
       - run:
           name: Run tests
           command: node js/Test.js  # Ajusta la ruta del archivo de prueba
