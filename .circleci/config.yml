@@ -1,9 +1,23 @@
 version: 2.1
 
 jobs:
+  test:
+    docker:
+      - image: cimg/node:16.14  # Usa una imagen que tenga Node.js y npm
+        environment:
+          - CHROME_BIN: /usr/bin/google-chrome
+          - DISPLAY: ":99.0"
+    steps:
+      - checkout
+      - run:
+          name: Install dependencies
+          command: npm install selenium-webdriver
+      - run:
+          name: Run tests
+          command: node js/Test.js  # Ajusta la ruta del archivo de prueba
   build:
     docker:
-      - image: cimg/node:16.14  # Use the same image for consistency
+      - image: cimg/node:16.14  # Usa la misma imagen para consistencia
     steps:
       - checkout
       - run:
@@ -11,33 +25,35 @@ jobs:
           command: touch example.txt
       - store_artifacts:
           path: example.txt
-
   deploy:
     docker:
-      - image: cimg/node:16.14  # Use the same image for consistency
+      - image: cimg/node:16.14  # Usa la misma imagen para consistencia
     steps:
-      - attach_workspace:
-          at: /workspace
       - run:
-          name: Deploy
-          command: echo "Deployment script goes here"
+          name: deploy
+          command: '#e.g. ./deploy.sh'
 
 workflows:
   example:
     jobs:
+      - test:
+          filters:
+            branches:
+              only:
+                - master
       - build:
+          requires:
+            - test
           filters:
             branches:
               only:
                 - master
       - deploy:
           requires:
-            - build
+            - test
           filters:
             branches:
               only:
                 - master
-
-
 
 
