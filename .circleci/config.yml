@@ -3,7 +3,7 @@ version: 2.1
 jobs:
   build:
     docker:
-      - image: cimg/node:16.14  # Usa la misma imagen para consistencia
+      - image: cimg/node:16.14  # Use the same image for consistency
     steps:
       - checkout
       - run:
@@ -11,9 +11,10 @@ jobs:
           command: touch example.txt
       - store_artifacts:
           path: example.txt
+
   deploy:
     docker:
-      - image: cimg/node:16.14  # Usa la misma imagen para consistencia
+      - image: cimg/node:16.14  # Use the same image for consistency
     steps:
       - attach_workspace:
           at: /workspace
@@ -36,6 +37,7 @@ workflows:
             branches:
               only:
                 - master
+
 
 
 
