@@ -1,4 +1,5 @@
 version: 2.1
+
 jobs:
   test:
     docker:
@@ -31,17 +32,26 @@ jobs:
       - run:
           name: deploy
           command: '#e.g. ./deploy.sh'
+
 workflows:
   example:
     jobs:
-      - test
+      - test:
+          filters:
+            branches:
+              only:
+                - master
       - build:
           requires:
             - test
+          filters:
+            branches:
+              only:
+                - master
       - deploy:
           requires:
             - test
-    branches:
-      only:
-        - master
-
+          filters:
+            branches:
+              only:
+                - master
