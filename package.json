@@ -1,6 +1,12 @@
 {
+  "type": "module",
   "dependencies": {
     "assert": "^2.1.0",
+    "chai": "^5.1.1",
+    "mocha": "^10.4.0",
     "selenium-webdriver": "^4.20.0"
+  },
+  "scripts": {
+    "test": "mocha js/test.mjs"
   }
 }
