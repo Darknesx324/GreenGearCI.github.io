@@ -141,8 +141,12 @@ main {
 }
 
 .titulo-principal {
-    color: var(--clr-main);
+    
     margin-bottom: 2rem;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-style: oblique;
+    text-shadow: 2px 2px;
+    color: #595e5e;
 }
 
 .contenedor-productos {
@@ -170,6 +174,10 @@ main {
 
 .producto-titulo {
     font-size: 1rem;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-style: italic;
+    font-style: var(--clr-white);
+
 }
 
 .producto-agregar {
@@ -182,6 +190,9 @@ main {
     cursor: pointer;
     border: 2px solid var(--clr-white);
     transition: background-color .2s, color .2s;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-style: italic;
+    font-style: var(--clr-gray);
 }
 
 .producto-agregar:hover {
